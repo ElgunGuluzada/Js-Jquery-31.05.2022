@@ -14,6 +14,9 @@
 
 
 <body>
+    <nav class="navbar navbar-light bg-light d-flex justify-content-end">
+        <a class="navbar-brand" href="/index.html">Main Page</a>
+    </nav>
     <div id="signup-container" class="container login">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
@@ -21,56 +24,58 @@
                     <h3>Sign Up</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="form-signup">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Name">
+                            <input id="signUpName" required type="text" class="form-control" placeholder="Name">
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Surname">
+                            <input id="signUpSurname" required type="text" class="form-control" placeholder="Surname">
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username">
+                            <input id="signUpUsername" required type="text" class="form-control" placeholder="Username">
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-at"></i></span>
                             </div>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input id="signUpEmail" type="email" required class="form-control" placeholder="Email">
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password">
+                            <input id="signUpPassword" type="password" required class="form-control"
+                                placeholder="password">
                         </div>
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="re-password">
+                            <input id="signUpRePassword" type="password" required class="form-control"
+                                placeholder="re-password">
                         </div>
                         <div class="form-group">
-                            <a id="login" class="btn float-right">
+                            <button id="register" type="submit" class="btn float-right">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 Register
-                            </a>
+                            </button>
                         </div>
                     </form>
                 </div>
