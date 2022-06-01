@@ -1,4 +1,5 @@
 let si = document.getElementById("si")
+let lo = document.getElementById("logOut")
 let idSi = document.getElementById("idSi")
 let idSu = document.getElementById("idSu")
 let signinContainer = document.getElementById("signin-container")
@@ -33,8 +34,7 @@ idSu.onclick = function () {
 }
 
 registerBtn.addEventListener("click", function () {
-    signupContainer.classList.add("d-none")
-    signinContainer.classList.remove("d-none")
+
     if (localStorage.getItem("user") == null) {
         localStorage.setItem("user", JSON.stringify([]))
     }
@@ -45,26 +45,31 @@ registerBtn.addEventListener("click", function () {
     }
     let dbArr = JSON.parse(localStorage.getItem("dbUser"));
 
-
     if (signUpEmail.value != "") {
-        alert("S")
-        arr.push({
-            Name: signUpName.value,
-            Surname: signUpSurname.value,
-            Username: signUpUsername.value,
-            Email: signUpEmail.value,
-            Password: signUpPassword.value
-        })
-        localStorage.setItem("user", JSON.stringify(arr));
-        dbArr.push({
-            Name: signUpName.value,
-            Surname: signUpSurname.value,
-            Username: signUpUsername.value,
-            Email: signUpEmail.value,
-            Password: signUpPassword.value
-        })
-        localStorage.setItem("dbUser", JSON.stringify(arr));
 
+        if (signUpPassword != signUpRePassword) {
+            alert("password is not same")
+        }
+        else {
+            signupContainer.classList.add("d-none")
+            signinContainer.classList.remove("d-none")
+            arr.push({
+                Name: signUpName.value,
+                Surname: signUpSurname.value,
+                Username: signUpUsername.value,
+                Email: signUpEmail.value,
+                Password: signUpPassword.value
+            })
+            localStorage.setItem("user", JSON.stringify(arr));
+            dbArr.push({
+                Name: signUpName.value,
+                Surname: signUpSurname.value,
+                Username: signUpUsername.value,
+                Email: signUpEmail.value,
+                Password: signUpPassword.value
+            })
+            localStorage.setItem("dbUser", JSON.stringify(arr));
+        }
     }
 
 })
@@ -79,7 +84,9 @@ loginBtn.addEventListener("click", function () {
     if (userLogin.value != "") {
         if (existUsername != undefined || existUseremail != undefined) {
             if (userLogin.value == existUsername.Username && userPassword.value == existUsername.Password) {
-                alert("Success")
+                signupContainer.classList.add("d-none")
+                signinContainer.classList.add("d-none")
+                lo.classList.remove("d-none")
             }
             else {
                 alert("Password is invalid!")
@@ -91,7 +98,10 @@ loginBtn.addEventListener("click", function () {
     else {
         alert("Please Enter Username")
     }
-
-
-
 })
+
+lo.onclick = function () {
+    this.classList.add("d-none")
+    signinContainer.classList.remove("d-none")
+
+}
