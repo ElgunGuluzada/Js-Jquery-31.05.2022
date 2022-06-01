@@ -1,26 +1,8 @@
-// $(document).ready(function () {
-
-// if (localStorage.getItem("user") == null) {
-//     localStorage.setItem("user", JSON.stringify([]))
-// }
-// let arr = JSON.parse(localStorage.getItem("user"));
-// let productId = this.parentElement.getAttribute("data-id");
-// let existProductId = arr.find(p => p.id == productId);
-// if (existProductId == undefined) {
-//     arr.push({
-//         id: productId,
-//         price: this.previousElementSibling.firstElementChild.innerText,
-//         imageUrl: this.parentElement.previousElementSibling.getAttribute("src"),
-//         name: this.parentElement.firstElementChild.innerText,
-//         count: 1
-//     })
-// }
-// else {
-// }
-// localStorage.setItem("basket", JSON.stringify(arr));
-
-// })
-
+let si = document.getElementById("si")
+let idSi = document.getElementById("idSi")
+let idSu = document.getElementById("idSu")
+let signinContainer = document.getElementById("signin-container")
+let signupContainer = document.getElementById("signup-container")
 
 let registerBtn = document.getElementById("register")
 let formSignUp = document.getElementById("form-signup")
@@ -31,10 +13,28 @@ let signUpEmail = document.getElementById("signUpEmail")
 let signUpPassword = document.getElementById("signUpPassword")
 let signUpRePassword = document.getElementById("signUpRePassword")
 
+let userLogin = document.getElementById("userLogin")
+let userPassword = document.getElementById("userPassword")
+let loginBtn = document.getElementById("login")
+
+si.onclick = function () {
+    this.classList.add("d-none")
+    signinContainer.classList.remove("d-none")
+}
+
+idSi.onclick = function () {
+    signinContainer.classList.add("d-none")
+    signupContainer.classList.remove("d-none")
+}
+
+idSu.onclick = function () {
+    signupContainer.classList.add("d-none")
+    signinContainer.classList.remove("d-none")
+}
 
 registerBtn.addEventListener("click", function () {
-    console.log(signUpName.value);
-
+    signupContainer.classList.add("d-none")
+    signinContainer.classList.remove("d-none")
     if (localStorage.getItem("user") == null) {
         localStorage.setItem("user", JSON.stringify([]))
     }
@@ -47,6 +47,7 @@ registerBtn.addEventListener("click", function () {
 
 
     if (signUpEmail.value != "") {
+        alert("S")
         arr.push({
             Name: signUpName.value,
             Surname: signUpSurname.value,
@@ -65,5 +66,32 @@ registerBtn.addEventListener("click", function () {
         localStorage.setItem("dbUser", JSON.stringify(arr));
 
     }
+
+})
+
+loginBtn.addEventListener("click", function () {
+    let dbArr = JSON.parse(localStorage.getItem("dbUser"));
+    let existUsername = dbArr.find(u => u.Username == userLogin.value);
+    let existUseremail = dbArr.find(u => u.Email == userLogin.value)
+    // console.log(existUsername);
+    // console.log(existUseremail);
+
+    if (userLogin.value != "") {
+        if (existUsername != undefined || existUseremail != undefined) {
+            if (userLogin.value == existUsername.Username && userPassword.value == existUsername.Password) {
+                alert("Success")
+            }
+            else {
+                alert("Password is invalid!")
+            };
+        } else {
+            alert("Username is invalid")
+        }
+    }
+    else {
+        alert("Please Enter Username")
+    }
+
+
 
 })
